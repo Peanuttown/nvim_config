@@ -84,3 +84,4 @@ let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 set background=dark
 colorscheme gruvbox-material
 
+ab :flower: 🌸
