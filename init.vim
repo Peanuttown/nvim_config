@@ -1,8 +1,10 @@
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf' 
+Plug 'junegunn/fzf.vim' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'easymotion/vim-easymotion'
 "Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 call plug#end()
@@ -47,6 +49,7 @@ nnoremap -nc :NERDTreeClose<CR>
 nnoremap -nf :NERDTreeFind<CR>
 nnoremap <s-e> :NERDTreeToggle<CR>
 tnoremap <c-j> <c-\><c-n>
+nmap -g <Plug>(easymotion-s2)
 
 
 lua << EOF
