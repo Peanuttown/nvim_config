@@ -85,3 +85,9 @@ set background=dark
 colorscheme gruvbox-material
 
 ab :flower: 🌸
+
+set autoindent
+set nu
+set matchpairs+=^:$,တ:ဈ,<:>
+set expandtab
+set smartcase
