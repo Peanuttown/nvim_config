@@ -7,6 +7,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'easymotion/vim-easymotion'
 "Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'MattesGroeger/vim-bookmarks'
 call plug#end()
 
 
@@ -50,6 +51,9 @@ nnoremap -nf :NERDTreeFind<CR>
 nnoremap <s-e> :NERDTreeToggle<CR>
 tnoremap <c-j> <c-\><c-n>
 nmap -g <Plug>(easymotion-s2)
+nmap -mt <Plug>BookmarkToggle
+nmap -ma  <Plug>BookmarkAnnotate
+nmap -ms  <Plug>BookmarkShowAll
 
 
 lua << EOF
@@ -96,3 +100,4 @@ set expandtab
 set smartcase
 set tabstop=2
 set shiftwidth=2
+let g:bookmark_no_default_key_mappings = 1
