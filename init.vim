@@ -94,3 +94,5 @@ set nu
 set matchpairs+=^:$,တ:ဈ,<:>
 set expandtab
 set smartcase
+set tabstop=2
+set shiftwidth=2
