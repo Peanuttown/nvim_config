@@ -8,6 +8,7 @@ Plug 'easymotion/vim-easymotion'
 "Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
 
@@ -39,6 +40,10 @@ augroup tzz-omnisharp
 	exec "autocmd FileType " . "cs" . " nmap <buffer> <c-]> :lua tzz_omnisharp_def()<CR>"
 augroup end
 
+augroup tzz-dap
+	au! 
+	exec "lua require('dap/go')"
+augroup end
 nnoremap -vs :vs<CR><c-w>l
 nnoremap -tt :tabnew<CR>:terminal<CR>
 nnoremap -tc :terminal<CR>
@@ -54,6 +59,12 @@ nmap -g <Plug>(easymotion-s2)
 nmap -mt <Plug>BookmarkToggle
 nmap -ma  <Plug>BookmarkAnnotate
 nmap -ms  <Plug>BookmarkShowAll
+nnoremap <silent> \dc :lua require'dap'.continue()<CR>
+nnoremap <silent> \dn :lua require'dap'.step_over()<CR>
+nnoremap <silent> \di :lua require'dap'.step_into()<CR>
+nnoremap <silent> \do :lua require'dap'.step_out()<CR>
+nnoremap <silent> \db :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> \dr :lua require'dap'.repl.open()<CR>
 
 
 lua << EOF
