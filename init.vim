@@ -8,8 +8,8 @@ Plug 'easymotion/vim-easymotion'
 "Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'mfussenegger/nvim-dap'
 Plug 'fatih/vim-go', 
+"Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
 
@@ -66,6 +66,8 @@ nnoremap <silent> \di :lua require'dap'.step_into()<CR>
 nnoremap <silent> \do :lua require'dap'.step_out()<CR>
 nnoremap <silent> \db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> \dr :lua require'dap'.repl.open()<CR>
+nnoremap -w :up<CR>
+inoremap <c-b> <left>
 
 
 lua << EOF
