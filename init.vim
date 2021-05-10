@@ -9,6 +9,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'sainnhe/gruvbox-material'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'mfussenegger/nvim-dap'
+Plug 'fatih/vim-go', 
 call plug#end()
 
 
@@ -112,3 +113,4 @@ set smartcase
 set tabstop=2
 set shiftwidth=2
 let g:bookmark_no_default_key_mappings = 1
+let g:go_gopls_enabled = 0
