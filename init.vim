@@ -68,6 +68,7 @@ nnoremap <silent> \db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> \dr :lua require'dap'.repl.open()<CR>
 nnoremap -w :up<CR>
 inoremap <c-b> <left>
+inoremap -g <ESC>
 
 
 lua << EOF
