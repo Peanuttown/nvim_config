@@ -121,6 +121,14 @@ let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
+ab :tada: 🎉
+ab :cross: ❌
+ab :check: ✅
+ab :warning:⚠️
+ab :bug: 🐛
+ab :devil: 😈
+ab :ch: တ
+ab :yy: ဈ
 
 set autoindent
 set nu
