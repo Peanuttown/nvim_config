@@ -9,6 +9,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'sainnhe/gruvbox-material'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'fatih/vim-go', 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
@@ -41,10 +42,10 @@ augroup tzz-omnisharp
 	exec "autocmd FileType " . "cs" . " nmap <buffer> <c-]> :lua tzz_omnisharp_def()<CR>"
 augroup end
 
-augroup tzz-dap
-	au! 
-	exec "lua require('dap/go')"
-augroup end
+"augroup tzz-dap
+"	au! 
+"	exec "lua require('dap/go')"
+"augroup end
 nnoremap -vs :vs<CR><c-w>l
 nnoremap -tt :tabnew<CR>:terminal<CR>
 nnoremap -tc :terminal<CR>
@@ -100,11 +101,24 @@ lua << EOF
 	end
 EOF
 
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"go"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
+
 let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 
 "colorscheme gruvbox
-set background=dark
-colorscheme gruvbox-material
+"set background=dark
+"colorscheme gruvbox-material
+hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
 
@@ -117,3 +131,4 @@ set tabstop=2
 set shiftwidth=2
 let g:bookmark_no_default_key_mappings = 1
 let g:go_gopls_enabled = 0
+
