@@ -71,6 +71,8 @@ nnoremap <silent> \dr :lua require'dap'.repl.open()<CR>
 nnoremap -w :up<CR>
 inoremap <c-b> <left>
 inoremap -g <ESC>
+inoremap <cr> <Cmd> call TzzEnter()<Cr>
+
 
 
 lua << EOF
@@ -141,4 +143,5 @@ set tabstop=2
 set shiftwidth=2
 let g:bookmark_no_default_key_mappings = 1
 let g:go_gopls_enabled = 0
+
 
