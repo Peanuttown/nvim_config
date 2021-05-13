@@ -34,6 +34,7 @@ augroup tzz-coc
 	au! 
 	exec "autocmd FileType " . join(lang_list,",") . " inoremap <silent><expr> <c-o> coc#refresh()"
 	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-]> :lua tzz_coc_jump_def()<CR>"
+	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
 augroup end
 
 augroup tzz-omnisharp
@@ -117,8 +118,8 @@ let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 
 "colorscheme gruvbox
 "set background=dark
-"colorscheme gruvbox-material
-hi Normal ctermbg=NONE guibg=NONE
+colorscheme gruvbox-material
+"hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
 ab :tada: 🎉
@@ -130,6 +131,7 @@ ab :devil: 😈
 ab :ch: တ
 ab :yy: ဈ
 
+set ignorecase
 set autoindent
 set nu
 set matchpairs+=^:$,တ:ဈ,<:>
