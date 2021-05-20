@@ -72,6 +72,11 @@ nnoremap -w :up<CR>
 inoremap <c-b> <left>
 inoremap -g <ESC>
 inoremap <cr> <Cmd> call TzzEnter()<Cr>
+inoremap <c-e> <ESC><s-a>
+inoremap { {}<left>
+inoremap ( ()<left>
+inoremap ) <Cmd> call  TzzFeedLeftParenthese()<CR>
+inoremap <c-l> <ESC>o
 
 
 
@@ -119,7 +124,7 @@ EOF
 let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 
 "colorscheme gruvbox
-"set background=dark
+set background=dark
 colorscheme gruvbox-material
 "hi Normal ctermbg=NONE guibg=NONE
 

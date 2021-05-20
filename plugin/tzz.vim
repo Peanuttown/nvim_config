@@ -82,3 +82,11 @@ function! TzzEnter()
     endif
         call  feedkeys("\<cr>","n")
 endfunction
+
+function! TzzFeedLeftParenthese()
+  if TzzGetPreviousChar() == "("
+    call feedkeys("\<right>","n")
+    return 1
+  endif
+  call feedkeys(")","n")
+endfunction
