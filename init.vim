@@ -10,6 +10,9 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'fatih/vim-go', 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'joshdick/onedark.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 "Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
@@ -26,7 +29,7 @@ lua << EOF
 EOF
 "
 
-let lang_list = ["go"]
+let lang_list = ["go,dart"]
 nnoremap -f :Files<CR>
 nnoremap -b :Buffers<CR>
 
@@ -68,6 +71,7 @@ nnoremap <silent> \di :lua require'dap'.step_into()<CR>
 nnoremap <silent> \do :lua require'dap'.step_out()<CR>
 nnoremap <silent> \db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> \dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> -c :Commands<CR>
 nnoremap -w :up<CR>
 inoremap <c-b> <left>
 inoremap -g <ESC>
@@ -76,7 +80,19 @@ inoremap <c-e> <ESC><s-a>
 inoremap { {}<left>
 inoremap ( ()<left>
 inoremap ) <Cmd> call  TzzFeedLeftParenthese()<CR>
-inoremap <c-l> <ESC>o
+inoremap -w <ESC>
+inoremap <c-a> <ESC>0a
+inoremap <c-n> <Down>
+inoremap <c-p> <Up>
+inoremap <c-f> <Right>
+inoremap <M-f> <ESC>ea
+inoremap <c-j> <ESC>o
+inoremap <c-l> <ESC>zza
+inoremap <c-k> <ESC><Right>Da
+inoremap <c-> <ESC>u
+inoremap <M-b> <ESC>bi
+inoremap <c-w> <ESC><c-w>
+
 
 
 
@@ -121,11 +137,12 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
+"let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 
 "colorscheme gruvbox
-set background=dark
-colorscheme gruvbox-material
+"set background=dark
+"colorscheme gruvbox-material
+colorscheme onedark
 "hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
@@ -148,5 +165,12 @@ set tabstop=2
 set shiftwidth=2
 let g:bookmark_no_default_key_mappings = 1
 let g:go_gopls_enabled = 0
+let g:neovide_transparency=0.8
+let g:neovide_cursor_vfx_mode = "railgun"
+set maxmempattern=100000000
+set guifont=Monaco:h20
+set encoding=utf-8
+set fileencoding=utf-8
+
 
 
