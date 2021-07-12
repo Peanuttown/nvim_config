@@ -53,6 +53,7 @@ augroup end
 nnoremap -vs :vs<CR><c-w>l
 nnoremap -tt :tabnew<CR>:terminal<CR>
 nnoremap -tc :terminal<CR>
+nnoremap -tp :lua require("utils").term_in_cur_file_dir()<CR>
 nnoremap -ts :vs<CR><c-w>l:terminal<CR>
 nnoremap <s-u> :e#<CR>
 nnoremap -q :q<CR>
@@ -92,7 +93,7 @@ inoremap <c-k> <ESC><Right>Da
 inoremap <c-> <ESC>u
 inoremap <M-b> <ESC>bi
 inoremap <c-w> <ESC><c-w>
-
+inoremap <M-h> <ESC>dawa
 
 
 
@@ -126,16 +127,16 @@ lua << EOF
 EOF
 
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"go"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    -- disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-}
-EOF
+"lua <<EOF
+"require'nvim-treesitter.configs'.setup {
+"  ensure_installed = {"go"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+"  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+"  highlight = {
+"    enable = true,              -- false will disable the whole extension
+"    -- disable = { "c", "rust" },  -- list of language that will be disabled
+"  },
+"}
+"EOF
 
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 
