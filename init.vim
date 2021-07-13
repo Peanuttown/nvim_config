@@ -13,6 +13,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'joshdick/onedark.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
@@ -93,7 +94,7 @@ inoremap <c-k> <ESC><Right>Da
 inoremap <c-> <ESC>u
 inoremap <M-b> <ESC>bi
 inoremap <M-h> <ESC>dawa
-
+inoremap <c-w> <ESC>dawa
 inoremap { {}<Left>
 inoremap <c-e> <ESC><s-a>
 inoremap -w <ESC>
@@ -146,7 +147,8 @@ EOF
 "colorscheme gruvbox
 "set background=dark
 "colorscheme gruvbox-material
-colorscheme onedark
+"colorscheme onedark
+colorscheme dracula
 "hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
