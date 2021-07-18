@@ -9,11 +9,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'sainnhe/gruvbox-material'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'fatih/vim-go', 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'joshdick/onedark.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vimwiki/vimwiki'
+Plug 'NLKNguyen/papercolor-theme'
 "Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
@@ -148,7 +150,9 @@ EOF
 "set background=dark
 "colorscheme gruvbox-material
 "colorscheme onedark
-colorscheme dracula
+"colorscheme dracula
+set background=light
+colorscheme PaperColor
 "hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
@@ -174,7 +178,7 @@ let g:go_gopls_enabled = 0
 let g:neovide_transparency=0.8
 let g:neovide_cursor_vfx_mode = "railgun"
 set maxmempattern=100000000
-set guifont=Monaco:h20
+" set guifont=Monaco:h20
 set encoding=utf-8
 set fileencoding=utf-8
 
