@@ -96,7 +96,7 @@ inoremap <c-k> <ESC><Right>Da
 inoremap <c-> <ESC>u
 inoremap <M-b> <ESC>bi
 inoremap <M-h> <ESC>dawa
-inoremap <c-w> <ESC>dawa
+inoremap <c-w> <ESC><Left>dawi
 inoremap { {}<Left>
 inoremap <c-e> <ESC><s-a>
 inoremap -w <ESC>
@@ -166,6 +166,7 @@ ab :bug: 🐛
 ab :devil: 😈
 ab :ch: တ
 ab :yy: ဈ
+ab :loading: ⌛
 
 set ignorecase
 set autoindent
