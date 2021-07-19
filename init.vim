@@ -100,6 +100,8 @@ inoremap <c-w> <ESC>dawa
 inoremap { {}<Left>
 inoremap <c-e> <ESC><s-a>
 inoremap -w <ESC>
+inoremap <c-w> <ESC><c-w>
+inoremap <c-h> <c-w>
 
 
 
