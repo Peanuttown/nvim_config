@@ -96,11 +96,9 @@ inoremap <c-k> <ESC><Right>Da
 inoremap <c-> <ESC>u
 inoremap <M-b> <ESC>bi
 inoremap <M-h> <ESC>dawa
-inoremap <c-w> <ESC><Left>dawi
 inoremap { {}<Left>
 inoremap <c-e> <ESC><s-a>
 inoremap -w <ESC>
-inoremap <c-w> <ESC><c-w>
 inoremap <c-h> <c-w>
 
 
