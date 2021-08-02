@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim' 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'easymotion/vim-easymotion'
@@ -17,7 +17,12 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vimwiki/vimwiki'
 Plug 'NLKNguyen/papercolor-theme'
 "Plug 'mfussenegger/nvim-dap'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+
 call plug#end()
+
+lua require("tz_lsp")
 
 
 " < set -es to edit VIMRC
@@ -36,12 +41,13 @@ let lang_list = ["go,dart"]
 nnoremap -f :Files<CR>
 nnoremap -b :Buffers<CR>
 
-augroup tzz-coc
-	au! 
-	exec "autocmd FileType " . join(lang_list,",") . " inoremap <silent><expr> <c-o> coc#refresh()"
-	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-]> :lua tzz_coc_jump_def()<CR>"
-	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
-augroup end
+"augroup tzz-coc
+"	au! 
+"	exec "autocmd FileType " . join(lang_list,",") . " inoremap <silent><expr> <c-o> coc#refresh()"
+"	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-]> :lua tzz_coc_jump_def()<CR>"
+"	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
+"augroup end
+"
 
 augroup tzz-omnisharp
 	au! 
@@ -106,6 +112,9 @@ inoremap <M-<> <Esc>ggi
 inoremap <M->> <Esc>Gi
 inoremap <M-m> <Esc>mna
 inoremap <M-P> <Esc>%a
+"map <c-p> to manually trigger completion
+imap <silent> <c-o> <Plug>(completion_trigger)
+
 
 
 
@@ -136,6 +145,10 @@ lua << EOF
 	function tzz_coc_jump_def()
 		tzzJumpToDef(tzz_coc_jump_def_wrapper)
 	end
+
+  function tzz_lsp_jump_def()
+		tzzJumpToDef(vim.lsp.buf.definition)
+  end
 EOF
 
 
@@ -190,4 +203,5 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 
+let g:completion_enable_auto_popup = 0
 
