@@ -100,6 +100,12 @@ inoremap { {}<Left>
 inoremap <c-e> <ESC><s-a>
 inoremap -w <ESC>
 inoremap <c-h> <c-w>
+inoremap <M-}> <Esc>}i
+inoremap <M-{> <Esc>{i
+inoremap <M-<> <Esc>ggi
+inoremap <M->> <Esc>Gi
+inoremap <M-m> <Esc>mna
+inoremap <M-P> <Esc>%a
 
 
 
