@@ -19,10 +19,19 @@ Plug 'NLKNguyen/papercolor-theme'
 "Plug 'mfussenegger/nvim-dap'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'folke/lsp-colors.nvim'
+"Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'romgrk/barbar.nvim'
+Plug 'folke/trouble.nvim'
 call plug#end()
 
 lua require("tz_lsp")
+
+lua << EOF
+  require("trouble").setup {}
+EOF
 
 
 " < set -es to edit VIMRC
@@ -121,12 +130,16 @@ imap <silent> <c-o> <Plug>(completion_trigger)
 lua << EOF
 	local utils = require("utils")
 	local vimfn = vim.fn
-	function tzzJumpToDef(doJump)
+	function tzzJumpToDef(doJump,doBeforeJump)
+      print("tzzJumpToDef")
 	    if utils.buffer_modified() and (vimfn.len(vimfn.win_findbuf(vimfn.bufnr('%'))) < 2 ) then
 		print("split")
-		vim.cmd("normal -vs")
+		vim.cmd("normal -vs<CR>")
 	    end
 	    -- vim.lsp.buf.definition()
+      if doBeforeJump then
+        doBeforeJump()
+      end
 	    doJump()
 	end
 
@@ -147,7 +160,12 @@ lua << EOF
 	end
 
   function tzz_lsp_jump_def()
-		tzzJumpToDef(vim.lsp.buf.definition)
+		tzzJumpToDef(
+      vim.lsp.buf.definition,
+      function()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>',true,false,true),'m',true)
+      end
+    )
   end
 EOF
 
@@ -170,6 +188,7 @@ EOF
 "colorscheme gruvbox-material
 "colorscheme onedark
 "colorscheme dracula
+"set background=dark
 set background=light
 colorscheme PaperColor
 "hi Normal ctermbg=NONE guibg=NONE
@@ -198,10 +217,12 @@ let g:go_gopls_enabled = 0
 let g:neovide_transparency=0.8
 let g:neovide_cursor_vfx_mode = "railgun"
 set maxmempattern=100000000
-" set guifont=Monaco:h20
+" set guifont=Hack:h20
+set guifont=Hack_Nerd_Font:h11
 set encoding=utf-8
 set fileencoding=utf-8
 
 
 let g:completion_enable_auto_popup = 0
+let g:completion_confirm_key = ""
 
