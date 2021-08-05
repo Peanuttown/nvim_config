@@ -20,11 +20,12 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'folke/lsp-colors.nvim'
-"Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'ryanoasis/vim-devicons'
+"Plug 'folke/lsp-colors.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 "Plug 'romgrk/barbar.nvim'
 Plug 'folke/trouble.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 call plug#end()
 
 lua require("tz_lsp")

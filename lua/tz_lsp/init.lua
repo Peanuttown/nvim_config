@@ -42,6 +42,7 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = function(client, bufnr)
     require'completion'.on_attach(client,bufnr)
+    require("lsp_signature").on_attach(client,bufnr)
     on_attach(client,bufnr)
     end,
     flags = {
