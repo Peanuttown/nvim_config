@@ -228,7 +228,7 @@ let g:neovide_transparency=0.8
 let g:neovide_cursor_vfx_mode = "railgun"
 set maxmempattern=100000000
 " set guifont=Hack:h20
-set guifont=Hack_Nerd_Font:h11
+set guifont=Hack_Nerd_Font:h20
 set encoding=utf-8
 set fileencoding=utf-8
 
