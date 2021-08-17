@@ -233,8 +233,13 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 
-let g:completion_enable_auto_popup = 0
-let g:completion_confirm_key = ""
+let g:completion_enable_auto_popup = 1
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_smart_case = 1
+let g:completion_trigger_on_delete = 1
+
+
+"let g:completion_confirm_key = ""
 
 
 
