@@ -5,15 +5,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'easymotion/vim-easymotion'
-"Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'fatih/vim-go', 
+Plug 'altercation/vim-colors-solarized'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kyoz/purify', { 'rtp': 'vim' }
-Plug 'joshdick/onedark.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vimwiki/vimwiki'
 Plug 'NLKNguyen/papercolor-theme'
 "Plug 'mfussenegger/nvim-dap'
@@ -24,9 +21,11 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 "Plug 'folke/lsp-colors.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 "Plug 'romgrk/barbar.nvim'
-Plug 'folke/trouble.nvim'
+Plug 'folke/trouble.nvim',{ 'do': ':lua print(1)' }
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'overcache/NeoSolarized'
 call plug#end()
+
 
 lua require("tz_lsp")
 
@@ -34,6 +33,7 @@ lua << EOF
   require("trouble").setup {}
 EOF
 
+let g:solarized_termcolors=256
 
 " < set -es to edit VIMRC
 lua << EOF
@@ -134,7 +134,6 @@ lua << EOF
 	function tzzJumpToDef(doJump,doBeforeJump)
       print("tzzJumpToDef")
 	    if utils.buffer_modified() and (vimfn.len(vimfn.win_findbuf(vimfn.bufnr('%'))) < 2 ) then
-		print("split")
 		vim.cmd("normal -vs<CR>")
 	    end
 	    -- vim.lsp.buf.definition()
@@ -162,6 +161,10 @@ lua << EOF
 
   function tzz_lsp_jump_def()
 		tzzJumpToDef(
+      vim.lsp.buf.definition
+    )
+    return
+		tzzJumpToDef(
       vim.lsp.buf.definition,
       function()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>',true,false,true),'m',true)
@@ -183,15 +186,12 @@ EOF
 "EOF
 
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
+"
 
-"colorscheme gruvbox
-"set background=dark
-"colorscheme gruvbox-material
-"colorscheme onedark
-"colorscheme dracula
-"set background=dark
+-
 set background=light
 colorscheme PaperColor
+
 "hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
@@ -226,4 +226,6 @@ set fileencoding=utf-8
 
 let g:completion_enable_auto_popup = 0
 let g:completion_confirm_key = ""
+
+
 
