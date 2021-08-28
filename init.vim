@@ -54,8 +54,6 @@ EOF
 let lang_list = ["go,dart"]
 "nnoremap -f :Files<CR>
 "nnoremap -b :Buffers<CR>
-nnoremap -f <cmd>Telescope find_files<cr>
-nnoremap -b <cmd>Telescope buffers<cr>
 
 "augroup tzz-coc
 "	au! 
@@ -98,7 +96,11 @@ nnoremap <silent> \do :lua require'dap'.step_out()<CR>
 nnoremap <silent> \db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> \dr :lua require'dap'.repl.open()<CR>
 nnoremap <silent> -c :Commands<CR>
-nnoremap -w :up<CR>
+nnoremap -f <cmd>Telescope find_files<cr>
+inoremap <M-p> <cmd>Telescope find_files<cr>
+inoremap <M-P> <cmd>Telescope buffers<cr>
+nnoremap -b <cmd>Telescope buffers<cr>
+inoremap <C-s> <Esc>:wa<CR>
 inoremap <c-b> <left>
 inoremap -g <ESC>
 inoremap <cr> <Cmd> call TzzEnter()<Cr>
@@ -106,7 +108,8 @@ inoremap <c-e> <ESC><s-a>
 inoremap { {}<left>
 inoremap ( ()<left>
 inoremap ) <Cmd> call  TzzFeedLeftParenthese()<CR>
-inoremap -w <ESC>
+inoremap -w <ESC>:wa<CR>
+nnoremap -w :wa<CR>
 inoremap jk <ESC>
 inoremap <c-a> <ESC>0a
 inoremap <c-n> <Down>
@@ -121,7 +124,6 @@ inoremap <M-b> <ESC>bi
 inoremap <M-h> <ESC>dawa
 inoremap { {}<Left>
 inoremap <c-e> <ESC><s-a>
-inoremap -w <ESC>
 inoremap <c-h> <c-w>
 inoremap <M-}> <Esc>}i
 inoremap <M-{> <Esc>{i
