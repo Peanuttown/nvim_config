@@ -24,6 +24,10 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim',{ 'do': ':lua print(1)' }
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'overcache/NeoSolarized'
+" <
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" >
 call plug#end()
 
 
@@ -48,8 +52,10 @@ EOF
 "
 
 let lang_list = ["go,dart"]
-nnoremap -f :Files<CR>
-nnoremap -b :Buffers<CR>
+"nnoremap -f :Files<CR>
+"nnoremap -b :Buffers<CR>
+nnoremap -f <cmd>Telescope find_files<cr>
+nnoremap -b <cmd>Telescope buffers<cr>
 
 "augroup tzz-coc
 "	au! 
@@ -101,6 +107,7 @@ inoremap { {}<left>
 inoremap ( ()<left>
 inoremap ) <Cmd> call  TzzFeedLeftParenthese()<CR>
 inoremap -w <ESC>
+inoremap jk <ESC>
 inoremap <c-a> <ESC>0a
 inoremap <c-n> <Down>
 inoremap <c-p> <Up>
