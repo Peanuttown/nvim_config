@@ -1,11 +1,15 @@
 call plug#begin('~/.vim/plugged')
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim' 
+Plug 'hoob3rt/lualine.nvim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'tom-anders/telescope-vim-bookmarks.nvim'
 Plug 'fatih/vim-go', 
 Plug 'altercation/vim-colors-solarized'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -29,6 +33,11 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " >
 call plug#end()
+
+lua << EOF
+require('telescope').load_extension('vim_bookmarks')
+require('lualine').setup()
+EOF
 
 
 lua require("tz_lsp")
@@ -89,6 +98,7 @@ nmap -g <Plug>(easymotion-s2)
 nmap -mt <Plug>BookmarkToggle
 nmap -ma  <Plug>BookmarkAnnotate
 nmap -ms  <Plug>BookmarkShowAll
+nnoremap -mf  <cmd>Telescope vim_bookmarks<Cr>
 nnoremap <silent> \dc :lua require'dap'.continue()<CR>
 nnoremap <silent> \dn :lua require'dap'.step_over()<CR>
 nnoremap <silent> \di :lua require'dap'.step_into()<CR>
@@ -200,6 +210,8 @@ EOF
 -
 set background=light
 colorscheme PaperColor
+"set background=dark
+"colorscheme tokyonight
 
 "hi Normal ctermbg=NONE guibg=NONE
 
