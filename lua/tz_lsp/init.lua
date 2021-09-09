@@ -44,11 +44,14 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {"gopls"}
 for _, lsp in ipairs(servers) do
+
   nvim_lsp[lsp].setup {
     on_attach = function(client, bufnr)
     require'completion'.on_attach(client,bufnr)
     require("lsp_signature").on_attach(client,bufnr)
     on_attach(client,bufnr)
+    local opts = { noremap=true, silent=true }
+    vim.api.nvim_buf_set_keymap(bufnr,'i', '<cr>', '<Cmd> call  TzzEnter()<Cr>', opts)
     end,
     flags = {
       debounce_text_changes = 150,

@@ -228,7 +228,9 @@ let g:neovide_transparency=0.8
 let g:neovide_cursor_vfx_mode = "railgun"
 set maxmempattern=100000000
 " set guifont=Hack:h20
-set guifont=Hack_Nerd_Font:h20
+"set guifont=Hack_Nerd_Font:h20
+set guifont=Hack\ Nerd\ Font:h20
+"set guifont=Yuanti\ SC:h20
 set encoding=utf-8
 set fileencoding=utf-8
 
@@ -237,6 +239,8 @@ let g:completion_enable_auto_popup = 1
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_smart_case = 1
 let g:completion_trigger_on_delete = 1
+"let g:neovide_fullscreen=v:true
+
 
 
 "let g:completion_confirm_key = ""
