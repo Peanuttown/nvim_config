@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'johngrib/vim-game-snake'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim' 
@@ -222,12 +223,11 @@ EOF
 
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 "
-
 -
-set background=light
-colorscheme PaperColor
-"set background=dark
-"colorscheme tokyonight
+"set background=light
+"colorscheme PaperColor
+set background=dark
+colorscheme tokyonight
 
 "hi Normal ctermbg=NONE guibg=NONE
 
@@ -270,8 +270,5 @@ let g:completion_trigger_on_delete = 1
 "let g:neovide_fullscreen=v:true
 
 
-
 "let g:completion_confirm_key = ""
-
-
 

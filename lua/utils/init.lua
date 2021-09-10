@@ -28,7 +28,18 @@ function utils.term_open()
   vim.cmd("terminal")
 end
 
+function utils.get_bufnr()
+  return vim.fn.bufnr()
+end
+
+function utils.cursor_get_pos()
+	local pos = vim.fn.getcurpos()
+	return {row=pos[2], col=pos[3]}
+end
+
+function utils.insert_to_cur_pos(textArray)
+  vim.api.nvim_put(textArray,"l",false,false)
+end
+
+
 return utils
-
-
-
