@@ -271,4 +271,10 @@ let g:completion_trigger_on_delete = 1
 
 
 "let g:completion_confirm_key = ""
+"
 
+lua << EOF
+  if vim.fn.has("win64") then
+    vim.api.nvim_command("set shell=powershell.exe")
+  end
+EOF
