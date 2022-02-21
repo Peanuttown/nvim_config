@@ -5,6 +5,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim' 
 Plug 'hoob3rt/lualine.nvim'
+"Plug 'kdheepak/tabline.nvim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'OmniSharp/omnisharp-vim'
@@ -13,7 +14,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'tom-anders/telescope-vim-bookmarks.nvim'
 Plug 'fatih/vim-go', 
 Plug 'altercation/vim-colors-solarized'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'vimwiki/vimwiki'
@@ -29,6 +30,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim',{ 'do': ':lua print(1)' }
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'overcache/NeoSolarized'
+Plug 'dracula/vim', { 'as': 'dracula' }
 " <
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -40,24 +42,26 @@ require('telescope').load_extension('vim_bookmarks')
 require('lualine').setup()
 EOF
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "go", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    -- disable = { "c", "rust" },  -- list of language that will be disabled
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-EOF
+"lua <<EOF
+"require'nvim-treesitter.configs'.setup {
+"  ensure_installed = "go", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+"  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+"  highlight = {
+"    enable = true,              -- false will disable the whole extension
+"    -- disable = { "c", "rust" },  -- list of language that will be disabled
+"    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+"    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+"    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+"    -- Instead of true it can also be a list of languages
+"    additional_vim_regex_highlighting = false,
+"  },
+"}
+"EOF
+
+let mapleader="-"
 
 
-lua require("tz_lsp")
+" lua require("tz_lsp")
 
 lua << EOF
   require("trouble").setup {}
@@ -77,17 +81,17 @@ lua << EOF
 EOF
 "
 
-let lang_list = ["go,dart"]
+let lang_list = ["go,dart,rust"]
 "nnoremap -f :Files<CR>
 "nnoremap -b :Buffers<CR>
 
-"augroup tzz-coc
-"	au! 
-"	exec "autocmd FileType " . join(lang_list,",") . " inoremap <silent><expr> <c-o> coc#refresh()"
-"	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-]> :lua tzz_coc_jump_def()<CR>"
-"	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
-"augroup end
-"
+augroup tzz-coc
+	au! 
+	exec "autocmd FileType " . join(lang_list,",") . " inoremap <silent><expr> <c-o> coc#refresh()"
+	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-]> :lua tzz_coc_jump_def()<CR>"
+	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
+augroup end
+
 
 augroup tzz-omnisharp
 	au! 
@@ -99,22 +103,22 @@ augroup end
 "	au! 
 "	exec "lua require('dap/go')"
 "augroup end
-nnoremap -vs :vs<CR><c-w>l
-nnoremap -tt :tabnew<CR>:terminal<CR>
-nnoremap -tc :terminal<CR>
-nnoremap -tp :lua require("utils").term_in_cur_file_dir()<CR>
-nnoremap -ts :vs<CR><c-w>l:terminal<CR>
+nnoremap <Leader>vs :vs<CR><c-w>l
+nnoremap <Leader>tt :tabnew<CR>:terminal<CR>
+nnoremap <Leader>tc :terminal<CR>
+nnoremap <Leader>tp :lua require("utils").term_in_cur_file_dir()<CR>
+nnoremap <Leader>ts :vs<CR><c-w>l:terminal<CR>
 nnoremap <s-u> :e#<CR>
-nnoremap -q :q<CR>
-nnoremap -nn :NERDTree<CR>
-nnoremap -nc :NERDTreeClose<CR>
-nnoremap -nf :NERDTreeFind<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>nn :NERDTree<CR>
+nnoremap <Leader>nc :NERDTreeClose<CR>
+nnoremap <Leader>nf :NERDTreeFind<CR>
 nnoremap <s-e> :NERDTreeToggle<CR>
 tnoremap <c-j> <c-\><c-n>
-nmap -g <Plug>(easymotion-s2)
-nmap -mt <Plug>BookmarkToggle
-nmap -ma  <Plug>BookmarkAnnotate
-nmap -ms  <Plug>BookmarkShowAll
+nmap <Leader>g <Plug>(easymotion-s2)
+nmap <Leader>mt <Plug>BookmarkToggle
+nmap <Leader>ma  <Plug>BookmarkAnnotate
+nmap <Leader>ms  <Plug>BookmarkShowAll
 nnoremap -mf  <cmd>Telescope vim_bookmarks<Cr>
 nnoremap <silent> \dc :lua require'dap'.continue()<CR>
 nnoremap <silent> \dn :lua require'dap'.step_over()<CR>
@@ -122,11 +126,13 @@ nnoremap <silent> \di :lua require'dap'.step_into()<CR>
 nnoremap <silent> \do :lua require'dap'.step_out()<CR>
 nnoremap <silent> \db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> \dr :lua require'dap'.repl.open()<CR>
-nnoremap <silent> -c :Commands<CR>
-nnoremap -f <cmd>Telescope find_files<cr>
+nnoremap <silent> <Leader>c :Commands<CR>
+nnoremap <Leader>f <cmd>Telescope find_files<cr>
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
 inoremap <M-p> <cmd>Telescope find_files<cr>
 inoremap <M-P> <cmd>Telescope buffers<cr>
-nnoremap -b <cmd>Telescope buffers<cr>
+nnoremap <Leader>b <cmd>Telescope buffers<cr>
 inoremap <C-s> <Esc>:wa<CR>
 inoremap <c-b> <left>
 inoremap -g <ESC>
@@ -135,8 +141,8 @@ inoremap <c-e> <ESC><s-a>
 inoremap { {}<left>
 inoremap ( ()<left>
 inoremap ) <Cmd> call  TzzFeedLeftParenthese()<CR>
-inoremap -w <ESC>:wa<CR>
-nnoremap -w :wa<CR>
+inoremap <Leader>w <ESC>:wa<CR>
+nnoremap <Leader>w :wa<CR>
 inoremap jk <ESC>
 inoremap <c-a> <ESC>0a
 inoremap <c-n> <Down>
@@ -224,10 +230,10 @@ EOF
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 "
 -
-"set background=light
-"colorscheme PaperColor
-set background=dark
-colorscheme tokyonight
+set background=light
+colorscheme PaperColor
+"set background=dark
+"colorscheme dracula
 
 "hi Normal ctermbg=NONE guibg=NONE
 
@@ -277,4 +283,9 @@ lua << EOF
   if vim.fn.has("win64") then
     vim.api.nvim_command("set shell=powershell.exe")
   end
+  require('telescope').setup{ defaults = { file_ignore_patterns = {"^build/.*","build\\.*"} } }
 EOF
+
+let g:go_imports_autosave = 0
+let g:go_fmt_autosave =0
+
