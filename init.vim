@@ -290,3 +290,6 @@ let g:go_fmt_autosave =0
 
 imap <C-l> <Plug>(coc-snippets-expand)
 
+
+command -nargs=* Outline :CocList outline
+nnoremap <c-k><c-o> :Outline<CR>
