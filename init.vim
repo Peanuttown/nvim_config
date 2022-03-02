@@ -6,7 +6,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim' 
 Plug 'hoob3rt/lualine.nvim'
 "Plug 'kdheepak/tabline.nvim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'easymotion/vim-easymotion'
@@ -22,7 +22,7 @@ Plug 'NLKNguyen/papercolor-theme'
 "Plug 'mfussenegger/nvim-dap'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
+"Plug 'lukas-reineke/indent-blankline.nvim'
 "Plug 'ryanoasis/vim-devicons'
 "Plug 'folke/lsp-colors.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -150,7 +150,6 @@ inoremap <c-p> <Up>
 inoremap <c-f> <Right>
 inoremap <M-f> <ESC>ea
 inoremap <c-j> <ESC>o
-inoremap <c-l> <ESC>zza
 inoremap <c-k> <ESC><Right>Da
 inoremap <c-> <ESC>u
 inoremap <M-b> <ESC>bi
@@ -230,12 +229,12 @@ EOF
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 "
 -
-set background=light
-colorscheme PaperColor
+"set background=light
+"'colorscheme PaperColor
 "set background=dark
 "colorscheme dracula
 
-"hi Normal ctermbg=NONE guibg=NONE
+hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
 ab :tada: 🎉
@@ -280,12 +279,14 @@ let g:completion_trigger_on_delete = 1
 "
 
 lua << EOF
-  if vim.fn.has("win64") then
-    vim.api.nvim_command("set shell=powershell.exe")
-  end
+  -- if vim.fn.has("win64") then
+  --   vim.api.nvim_command("set shell=powershell.exe")
+  -- end
   require('telescope').setup{ defaults = { file_ignore_patterns = {"^build/.*","build\\.*"} } }
 EOF
 
 let g:go_imports_autosave = 0
 let g:go_fmt_autosave =0
+
+imap <C-l> <Plug>(coc-snippets-expand)
 
