@@ -91,7 +91,8 @@ augroup tzz-coc
 	au! 
 	exec "autocmd FileType " . join(lang_list,",") . " inoremap <silent><expr> <c-o> coc#refresh()"
 	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-]> :lua tzz_coc_jump_def()<CR>"
-	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
+	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next-error)" 
+	exec "autocmd FileType " . join(lang_list,",") . " nmap <buffer> <c-d><c-n> <Plug>(coc-diagnostic-next)" 
 augroup end
 
 
