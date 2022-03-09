@@ -37,47 +37,7 @@ Plug 'nvim-telescope/telescope.nvim'
 " >
 call plug#end()
 
-call plug#begin('~/.vim/plugged')
-  Plug 'lukas-reineke/indent-blankline.nvim'
-call plug#end()
 
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'johngrib/vim-game-snake'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf' 
-Plug 'junegunn/fzf.vim' 
-Plug 'hoob3rt/lualine.nvim'
-"Plug 'kdheepak/tabline.nvim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree'
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'tom-anders/telescope-vim-bookmarks.nvim'
-Plug 'fatih/vim-go', 
-Plug 'altercation/vim-colors-solarized'
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'kyoz/purify', { 'rtp': 'vim' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'vimwiki/vimwiki'
-Plug 'NLKNguyen/papercolor-theme'
-"Plug 'mfussenegger/nvim-dap'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-"Plug 'lukas-reineke/indent-blankline.nvim'
-"Plug 'ryanoasis/vim-devicons'
-"Plug 'folke/lsp-colors.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-"Plug 'romgrk/barbar.nvim'
-Plug 'folke/trouble.nvim',{ 'do': ':lua print(1)' }
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'overcache/NeoSolarized'
-Plug 'dracula/vim', { 'as': 'dracula' }
-" <
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-" >
-call plug#end()
 
 lua << EOF
 require('telescope').load_extension('vim_bookmarks')
@@ -271,12 +231,12 @@ EOF
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 "
 -
-"set background=light
-"'colorscheme PaperColor
+set background=light
+colorscheme PaperColor
 "set background=dark
 "colorscheme dracula
 
-hi Normal ctermbg=NONE guibg=NONE
+"hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
 ab :tada: 🎉
@@ -335,3 +295,5 @@ imap <C-l> <Plug>(coc-snippets-expand)
 
 command -nargs=* Outline :CocList outline
 nnoremap <c-k><c-o> :Outline<CR>
+
+"let g:coc_global_extensions = ['coc-snippets']
