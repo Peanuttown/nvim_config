@@ -282,9 +282,9 @@ let g:completion_trigger_on_delete = 1
 "
 
 lua << EOF
-  if vim.fn.has("win64") then
-    vim.api.nvim_command("set shell=powershell.exe")
-  end
+  -- if vim.fn.has("win64") then
+  -- vim.api.nvim_command("set shell=powershell.exe")
+  -- end
   require('telescope').setup{ defaults = { file_ignore_patterns = {"^build/.*","build\\.*","target",".git"} } }
 EOF
 
@@ -297,4 +297,4 @@ imap <C-l> <Plug>(coc-snippets-expand)
 command -nargs=* Outline :CocList outline
 nnoremap <c-k><c-o> :Outline<CR>
 
-"let g:coc_global_extensions = ['coc-snippets']
+let g:coc_global_extensions = ['coc-snippets']
