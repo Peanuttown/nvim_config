@@ -1,9 +1,18 @@
+#b — snippet can only be expanded if it’s the beginning of the line
+#A — snippet will be expanded automatically
+#w — snippet can be expanded if it’s a “word” to vim (check :help iskeyword). For example, a word can be “a sequence of other non-blank characters” according to :help word.
+#i — snippet can be expanded in the middle of a word.
+
 snippet output "emitter properties" b
 fmt.Println(${1})
 endsnippet
 
-snippet import "import" b
+snippet it "import" b
 import(
 	"${1}"
 )
+endsnippet
+
+snippet ct "context" i
+ctx context.Context
 endsnippet
