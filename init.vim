@@ -34,6 +34,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " <
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'L3MON4D3/LuaSnip'
 " >
 call plug#end()
 
@@ -107,6 +108,7 @@ augroup end
 "	exec "lua require('dap/go')"
 "augroup end
 nnoremap <Leader>vs :vs<CR><c-w>l
+nnoremap <m-v> :GoVet<CR>
 nnoremap <Leader>tt :tabnew<CR>:terminal<CR>
 nnoremap <Leader>tc :terminal<CR>
 nnoremap <Leader>tp :lua require("utils").term_in_cur_file_dir()<CR>
@@ -133,6 +135,8 @@ nnoremap <silent> <Leader>c :Commands<CR>
 nnoremap <Leader>f <cmd>Telescope find_files<cr>
 nnoremap <M-1> 1gt
 nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
 inoremap <M-p> <cmd>Telescope find_files<cr>
 inoremap <M-P> <cmd>Telescope buffers<cr>
 nnoremap <Leader>b <cmd>Telescope buffers<cr>
@@ -168,6 +172,8 @@ inoremap <M-m> <Esc>mna
 inoremap <M-P> <Esc>%a
 "map <c-p> to manually trigger completion
 imap <silent> <c-o> <Plug>(completion_trigger)
+cnoremap <c-b> <left>
+cnoremap <c-f> <right>
 
 
 
@@ -231,12 +237,18 @@ EOF
 
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 "
--
+
 set background=light
 colorscheme PaperColor
-"set background=dark
+"set background=light
 "colorscheme dracula
 
+"let g:tokyonight_style = "night"
+"colorscheme tokyonight
+"set background=dark
+"colorscheme NeoSolarized
+"set background=dark
+"colorscheme solarized
 "hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
@@ -297,4 +309,13 @@ imap <C-l> <Plug>(coc-snippets-expand)
 command -nargs=* Outline :CocList outline
 nnoremap <c-k><c-o> :Outline<CR>
 
-let g:coc_global_extensions = ['coc-snippets']
+"let g:coc_global_extensions = ['coc-snippets']
+
+lua << EOF
+require("luasnip.loaders.from_snipmate").lazy_load()
+EOF
+imap <silent><expr> <c-l> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+snoremap <silent> <c-l> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>

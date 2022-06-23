@@ -9,10 +9,30 @@ endsnippet
 
 snippet it "import" b
 import(
-	"${1}"
+	"${1:fmt}"
 )
 endsnippet
 
 snippet ct "context" i
 ctx context.Context
+endsnippet
+
+snippet mm "make map string interface" i
+make(map[string]interface{})
+endsnippet
+
+snippet td "todo" i
+panic("TODO")
+endsnippet
+
+snippet ie "if err" i
+if err != nil{
+	return ${1:nil,err}
+}
+endsnippet
+
+snippet iee "if err" i
+if err != nil{
+	return ${1:err}
+}
 endsnippet

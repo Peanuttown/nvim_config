@@ -1,9 +1,4 @@
 {
-  "snippets.autoTrigger":true,
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "gosnippets/UltiSnips"
-  ],
   "languageserver": {
     "go": {
       "command": "gopls",
