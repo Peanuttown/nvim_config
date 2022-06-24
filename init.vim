@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+Plug 'plasticboy/vim-markdown'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'johngrib/vim-game-snake'
 Plug 'tpope/vim-fugitive'
