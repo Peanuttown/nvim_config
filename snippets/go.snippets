@@ -3,7 +3,15 @@ snippet output "emitter properties"
 
 snippet it "import"
 	import(
-		"testing"
+		"$1"
 	)
-#
+snippet tt "test"
+	func Test$1(t *testing.T){
 
+	}
+snippet rt "return"
+	return $1
+snippet ie "if err"
+	if err != nil{
+		${1}
+	}
