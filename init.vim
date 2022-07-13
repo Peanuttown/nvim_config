@@ -15,7 +15,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'tom-anders/telescope-vim-bookmarks.nvim'
 Plug 'fatih/vim-go', 
 Plug 'altercation/vim-colors-solarized'
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 "Plug 'vimwiki/vimwiki'
@@ -36,6 +36,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'EdenEast/nightfox.nvim'
 " >
 call plug#end()
 
@@ -239,8 +240,9 @@ EOF
 "let g:OmniSharp_server_path = 'D:\tools\omnisharp\OmniSharp.exe'
 "
 
-set background=light
-colorscheme PaperColor
+"set background=light
+"colorscheme PaperColor
+colorscheme nightfox
 "set background=light
 "colorscheme dracula
 
@@ -250,7 +252,7 @@ colorscheme PaperColor
 "colorscheme NeoSolarized
 "set background=dark
 "colorscheme solarized
-"hi Normal ctermbg=NONE guibg=NONE
+hi Normal ctermbg=NONE guibg=NONE
 
 ab :flower: 🌸
 ab :tada: 🎉
@@ -320,3 +322,27 @@ snoremap <silent> <c-l> <cmd>lua require('luasnip').jump(1)<Cr>
 snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
 
 inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
